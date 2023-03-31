@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coordinate Calculator</title>
+</head>
+<body>
+    <button onclick="calculate()">Calculate</button>
+    <p id="map-link"></p>
+    
+    <script>
+        async function calculate() {
+            const response = await fetch(`http://localhost:8080/calculate`);
+            const data = await response.json();
+
+            const mapLink = `https://www.google.com/maps?q=${data.latitude},${data.longitude}`;
+            document.getElementById('map-link').innerHTML = `<a href="${mapLink}" target="_blank">View on Google Maps</a>`;
+        }
+    </script>
+</body>
+</html>
