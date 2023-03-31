@@ -1,9 +1,10 @@
 package main
 
 import (
-    "net/http"
+	"net/http"
+	"os"
 
-    "github.com/gin-gonic/gin"
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
@@ -31,5 +32,10 @@ func main() {
         })
     })
 
-    router.Run(":8080")
+    port := os.Getenv("PORT")
+    if port == "" {
+        port = "8080" // Fallback to default port 8080 for local development
+    }
+
+    router.Run(":" + port)
 }

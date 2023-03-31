@@ -11,7 +11,7 @@
     
     <script>
         async function calculate() {
-            const response = await fetch(`http://localhost:8080/calculate`);
+            const response = await fetch(`/calculate`);
             const data = await response.json();
 
             const mapLink = `https://www.google.com/maps?q=${data.latitude},${data.longitude}`;
